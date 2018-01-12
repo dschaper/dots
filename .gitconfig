@@ -1,0 +1,10 @@
+[commit]
+	gpgsign = true
+[credential]
+	helper = netrc -f ~/.netrc.gpg -v
+[format]
+	signoff = true
+[user]
+	email = dan@glacialmagma.com
+	name = Dan Schaper
+	signingkey = 2420EB8A7E12CEDA
