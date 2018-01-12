@@ -1,6 +1,6 @@
 [commit]
 	gpgsign = true
-[credential]
+[credential "https://github.com"]
 	helper = netrc -f ~/.netrc.gpg -v
 [format]
 	signoff = true

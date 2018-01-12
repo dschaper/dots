@@ -16,33 +16,27 @@ fi
   source $ZSH_CONF/termsupport.zsh
   source $ZSH_CONF/spectrum.zsh
   source $ZSH_CONF/aliases
-  source $ZSH_CONF/bindkeys.zsh
+  source $ZSH_CONF/bindkeys
 
 # Source plugins
 
 # ZSH port of the FISH shell's history search
-plug=zsh-history-substring-search
-if [[ ! -d $ZSH_PLUGS/$plug ]]; then
-  mkdir $ZSH_PLUGS/$plug
-  wget -qO - https://api.github.com/repos/zsh-users/$plug/tarball | \
-    tar -C $ZSH_PLUGS/$plug -xz --wildcards --no-anchored "*.zsh" --strip-components=1 
-fi
-source $ZSH_PLUGS/$plug/*.plugin.zsh
-
+install_plugin zsh-history-substring-search zsh-users $ZSH_PLUGS omz
 
 # Powerlevel9k theme
-  source $ZSH_CONF/powerlevel9k-config.zsh
-  if [[ ! -d $ZSH_PLUGS/powerlevel9k ]]; then
-    wget -qO - https://api.github.com/repos/bhilburn/powerlevel9k/tarball | \
-      tar -xz --wildcards --no-anchored '*theme' --strip-components=1 -C $ZSH_PLUGS/powerlevel9k
-  fi
-  source $ZSH_PLUGS/powerlevel9k/powerlevel9k.zsh-theme
+source $ZSH_CONF/powerlevel9k-config.zsh
+plug=powerlevel9k
+author=bhilburn
+if [[ ! -d $ZSH_PLUGS/$plug ]]; then
+  mkdir $ZSH_PLUGS/$plug
+  wget -qO - https://api.github.com/repos/$bhilburn/$plug/tarball | \
+    tar -C $ZSH_PLUGS/$plug -xz --strip-components=1
+fi
+source $ZSH_PLUGS/$plug/*.zsh-theme
 
-autoload -Uz compinit promptinit
+autoload -Uz compinit
 # Load command line completions
 compinit
-# Initialize prompt
-promptinit
 
 # Autocompletion with arrow-key driven interface
 zstyle ':completion:*' menu select
