@@ -21,7 +21,7 @@ alias md='mkdir -p'
 alias rd='rmdir'
 
 # Search running processes. Usage: psg <process_name>
-alias psg="ps aux $( [[ -n "$(uname -a | grep CYGWIN )" ]] && echo '-W') | grep -i $1"
+alias psgrep="ps aux $( [[ -n "$(uname -a | grep CYGWIN )" ]] && echo '-W') | grep -i $1"
 
 # Copy with a progress bar
 alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --" 
@@ -37,5 +37,7 @@ alias youtube='web_search ddg \!yt'
 alias map='web_search ddg \!m'
 alias image='web_search ddg \!i'
 
-alias ealias="${EDITOR:-nvim} ~/.config/zsh/aliases && source ~/.config/zsh/aliases && echo Updated aliases."
+alias ealiases="${EDITOR:-nvim} ~/.config/zsh/aliases && source ~/.config/zsh/aliases && echo Updated aliases."
+alias ezshrc="${EDITOR:-nvim} ~/.zshrc && source ~/.zshrc && echo Updated zshrc."
+alias ebinds="${EDITOR:-nvim} ~/.config/zsh/bindkeys && source ~/.config/zsh/bindkeys && echo Updated keybindings."
 # vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8
