@@ -160,25 +160,3 @@ sudo-command-line() {
 }
 zle -N sudo-command-line
 
-install_plugin() {
-    local plugin_name=$1
-    local plugin_author=$2
-    local plugin_directory=$3
-    local plugin_path
-
-    plugin_path=$plugin_directory/$plugin_name
-
-    if [[ ! -d $plugin_path ]]; then
-        mkdir $plugin_path
-        wget -qO - https://api.github.com/repos/$plugin_author/$plugin_name/tarball | \
-            tar -C $plugin_path -xz --strip-components=1 
-    fi
-    case $plugin_type in
-        omz)
-            source $plugin_path/*.plugin.zsh ;;
-        zsh)
-            source $plugin_path/*.zsh ;;
-        theme)
-            source $plugin_path/*theme ;;
-    esac
-}
