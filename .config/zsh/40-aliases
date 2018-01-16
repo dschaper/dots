@@ -40,4 +40,15 @@ alias image='web_search ddg \!i'
 alias ealiases="${EDITOR:-nvim} ~/.config/zsh/aliases && source ~/.config/zsh/aliases && echo Updated aliases."
 alias ezshrc="${EDITOR:-nvim} ~/.zshrc && source ~/.zshrc && echo Updated zshrc."
 alias ebinds="${EDITOR:-nvim} ~/.config/zsh/bindkeys && source ~/.config/zsh/bindkeys && echo Updated keybindings."
+alias myrepos="gitit repo dschaper" #put your name here (usage: `myrepos <reponame>` to open up your repo.)
+alias compare="gitit compare"
+alias commits="gitit commits"
+alias branch="gitit branch"
+alias gistory="gitit history"
+alias prs="gitit pulls"
+alias myprs="gitit pulls author:peterhurford" #put your name here
+alias mybranches="gitit branches mine"
+alias gitgrep="gitit grep"
+alias ctrlp="gitit ctrlp"
+alias issues="gitit issues"
 # vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8

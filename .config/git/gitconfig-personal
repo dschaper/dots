@@ -1,0 +1,6 @@
+# vim: set ft=gitconfig:
+[user]
+	signingkey = 2420EB8A7E12CEDA
+	name = 'Dan Schaper'
+	email = 'dan@glacialmagma.com'
+	username = dschaper

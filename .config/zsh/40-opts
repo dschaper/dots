@@ -1,0 +1,57 @@
+# https://github.com/voku/dotfiles/blob/master/.redpill/lib/1_options.zsh
+setopt \
+  `# please no beeeeeeps` \
+  NO_BEEP \
+  `# Do not enter command lines into the history list if they are duplicates of the previous event` \
+  HIST_IGNORE_DUPS \
+  `# remove the history (fc -l) command from the history list when invoked` \
+  HIST_NO_STORE \
+  `# Save each command’s beginning timestamp (in seconds since the epoch) and the duration (in seconds) to the history file` \
+  EXTENDED_HISTORY \
+  `# remove command lines from the history list when the first character on the line is a space` \
+  HIST_IGNORE_SPACE \
+  `# remove superfluous blanks from each command line being added to the history list` \
+  HIST_REDUCE_BLANKS \
+  `# when listing files that are possible completions, show the type of each file with trailing mark` \
+  LIST_TYPES \
+  `# automatically list choices on an ambiguous completion` \
+  AUTO_LIST \
+  `# automatically use menu completion after the second consecutive request for completion` \
+  AUTO_MENU \
+  `# when listing files that are possible completions, show the type of each file with a trailing identifying mark` \
+  LIST_TYPES \
+  `# don’t push multiple copies of the same directory onto the directory stack` \
+  PUSHD_IGNORE_DUPS \
+  `# if unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and completion is done from both ends` \
+  COMPLETE_IN_WORD \
+  `# extra completion` \
+  COMPLETE_ALIASES \
+  `# append a trailing ‘/’ to all directory names resulting from filename generation` \
+  MARK_DIRS \
+  `# If the internal history needs to be trimmed to add the current command line, setting this option will cause the oldest history event that has a duplicate to be lost before losing a unique event` \
+  HIST_EXPIRE_DUPS_FIRST
+
+unsetopt \
+  `# do not set auto_name_dirs because it messes up prompts ` \
+  AUTO_NAME_DIRS \
+  `# do not autoselect the first completion entry ` \
+  MENU_COMPLETE \
+  `# do not freezes output to the terminal until you type ^q `\
+  FLOWCONTROL \
+  `# do not print the directory stack after pushd or popd` \
+  PUSHD_SILENT \
+  `# if a command is not in the hash table, and there exists an executable directory by that name, perform the cd command to that directory` \
+  AUTO_CD \
+  `# this option both imports new commands from the history file, and also causes your typed command ` \
+  SHARE_HISTORY \
+  `# do not beeep, please ` \
+  HIST_BEEP
+
+## zsh completions
+setopt hash_list_all            # hash everything before completion
+setopt always_to_end            # when completing from the middle of a word, move the cursor to the end of the word
+setopt complete_in_word         # allow completion from within a word/phrase
+setopt correct                  # spelling correction for commands
+setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
+
+setopt share_history            # Share your history across all your terminal windows

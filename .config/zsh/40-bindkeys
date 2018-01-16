@@ -2,7 +2,7 @@
 # Key bindings
 bindkey -e 						                                    # Use emacs mode bindings
 
-bindkey "" history-incremental-pattern-search-backward	# [CTRL-R] - command search
+bindkey "^R" history-incremental-pattern-search-backward	# [CTRL-R] - command search
 bindkey "	" expand-or-complete-with-dots                  # [Tab] show dots while waiting for tab completion
 bindkey '^[[A' history-substring-search-up                # [Up-Arrow]
 bindkey '^[[B' history-substring-search-down              # [Down-Arrow]
@@ -10,3 +10,8 @@ bindkey -M emacs '^P' history-substring-search-up         # emacs: [Ctrl-P]
 bindkey -M emacs '^N' history-substring-search-down       # emacs: [Ctrl-N]
 bindkey -M vicmd 'k' history-substring-search-up          # vi: [k]
 bindkey -M vicmd 'j' history-substring-search-down        # vi: [j]
+
+zle -N globalias
+bindkey " " globalias
+bindkey "^ " magic-space           # control-space to bypass completion
+bindkey -M isearch " " magic-space # normal space during searches

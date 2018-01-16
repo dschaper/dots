@@ -1,10 +1,172 @@
+# vim:ft=gitconfig:sw=4:ts=4:et:
+[includeIf "gitdir:~/"]
+    path = ~/.config/git/gitconfig-personal
+[includeIf "gitdir:**/Pi-hole/"]
+    path = ~/.config/git/gitconfig-pihole
+
+[advice]
+    statusHints = true
+[alias]
+    # List my aliases
+    aliases = "!git config --get-regexp alias | cut -c 7-"
+    la = "!git aliases"
+
+    ## Simple shortcuts
+    # Sign all commits
+    cs = commit --signoff
+    csm = commit --signoff --message
+    # Show status
+    s = status
+    # Checkout branch
+    co = checkout
+    cob = checkout -b
+    # Verbose branch list
+    b = branch -vv
+    # Use diff-tool
+    dt = difftool
+
+    # Alias for git open, in case I forget it's called git open
+    browse = !git open
+
+    # Fix up previous commit
+    amend = commit --amend --reuse-message=HEAD
+
+    # Find ignored files
+    ignored = "!git ls-files -v | grep '^[[:lower:]]'"
+
+    # Usage: git signoff-rebase [base-commit]
+    signoff-rebase = "!GIT_SEQUENCE_EDITOR='sed -i -re s/^pick/e/' sh -c 'git rebase -i $1 && while test -f .git/rebase-merge/interactive; do git commit --amend --signoff --no-edit && git rebase --continue; done' -"
+    # Edit global config file
+    econfig = config --global --edit
+    # Edit local config file
+    lconfig = config --local --edit
+
+    # https://haacked.com/archive/2014/07/28/github-flow-aliases/
+    # GitFlow start with a clean base
+    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+    # GitFlow commit changes so far
+    cm = !git add --all && git commit --message
+
+    # GitFlow save what I've been working on
+    fsave = ~git add --all && git commit --message 'SAVEPOINT'
+    fwip = commit --all --message "WIP"
+    # Undo the save/wip and get back to where I was working
+    fundo = reset HEAD~1 --mixed
+    # Keep the previous savepoint but edit the commit message
+    famend = commit --all --amend
+    # Had a really bad idea, wipe it out
+    fwipe = !git add -all && git commit --quiet --message 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+
+    # Clean up merged branches from local - tidy up
+    bclean = "!f() { git checkout ${1-development} && git branch --merged ${1-development} | grep -v " ${1-development}$" | xargs git branch -d; }; f"
+    # Finished with feature branch, clean up the environment after feature has been merged
+    bdone = "!f() { git checkout ${1-development} && git up && git bclean ${1-development}; }; f"
+
+    # Made commits to the wrong branch, don't lose them, just move them.
+    # https://haacked.com/archive/2015/06/29/git-migrate/
+    # git migrate new_branch_name [TARGET_BRANCH:-master] [COMMITS:-remote-head]
+    migrate = "!f(){ CURRENT=$(git symbolic-ref --short HEAD); git checkout -b $1 && git branch --force $CURRENT ${3-'$CURRENT@{u}'} && git rebase --onto ${2-master} $CURRENT; }; f"
+    # Open repo in browser
+    open = "!f() { REPO_URL=$(git config remote.origin.url); nohup xdg-open ${REPO_URL%%.git} >/dev/null &}; f"
+
+    # Pull Request helpers
+    # Pull request by GitHub PR ID# `pr ID remote`
+    pr = "!f(){ git fetch --force --update-head-ok ${2:-upstream} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    # Clean up pull requests using branchname for base git `pr-clean origin-branchname`
+    # pr-clean = "!git checkout ${2:-development}; git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
+    # History helpers
+    # Show compact history
+    l = "!git log -10 --graph --pretty='tformat:%C(yellow)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS"
+    # Show commit log using graph notation
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    # List commits showing changed files
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ra = log --graph --abbrev-commit --date=relative -20 --all --pretty='format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
+    markdown = !BN=$(git name-rev --name-only HEAD) && git log --no-merges --grep=$BN --pretty=oneline | awk -F"$BN: " '{print \"-\", $NF}' | uniq
+
+    # Git subtrees
+    # subtree add
+    sba =  "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+    # subtree update
+    sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+
+	# See all the commits related to a file
+	filelog = log --patch
+	fl = log --patch
+
+    # The following aliases were nabbed from http://kamalmarhubi.com/blog/2016/02/29/my-git-aliases/
+	# Print absolute path of repo root directory
+	root = rev-parse --show-toplevel
+	# Print short sha1; usage: `git sha1 [REF]`
+	sha1 = "!sh -c 'git rev-parse --short ${1:-HEAD}' --"
+
+	# Make stashing easier
+	st = stash
+	stl = stash list
+	stp = stash pop
+	sta = stash apply
+
+    # Easier merging
+	m = merge -s recursive -X patience
+	mm = merge --no-ff
+	merge-branch = !git checkout master && git merge @{-1}
+	conflicted = grep --name-only --full-name '<<<<<<< HEAD'
+	# Pick our version of a file while merging
+	ours = "!f() { git co --ours $@ && git add $@; }; f"
+	# Pick their version of a file while merging
+	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+    # Remove branch
+    unbranch = "!git branch -d"
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red # deletions
+    new = green # additions
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
 [commit]
 	gpgsign = true
+[core]
+    editor = vim -pc ':normal gg'
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    pager = less -FXR
 [credential "https://github.com"]
 	helper = netrc -f ~/.netrc.gpg -v
 [format]
 	signoff = true
-[user]
-	email = dan@glacialmagma.com
-	name = Dan Schaper
-	signingkey = 2420EB8A7E12CEDA
+
+[fetch]
+	fsckObjects = true
+[transfer]
+	fsckObjects = true
+[receive]
+	fsckObjects = true
+
+[gpg]
+    program = gpg2
+[help]
+    # Automatically correct and execute mistyped commands
+    autocorrect = 1
+[interactive]
+	diffFilter = diff-highlight
+[pager]
+	color = true
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+[status]
+    submoduleSummary = 1
+[vim]
+    modeline = tabstop=8 shiftwidth=8 noexpandtab cindent
+    modeline-c = ts=4 sw=4 et
+    modeline-make = ts=8 sw=8 noet
