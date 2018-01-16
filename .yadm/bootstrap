@@ -1,10 +1,21 @@
 #!/usr/bin/env zsh
 
 # Install git netrc credential helper
-printf "Installing git netrc credential helper.\\n"
-curl --silent --show-error --create-dirs --output ~/bin/git-credential-netrc \
-  https://raw.githubusercontent.com/git/git/master/contrib/credential/netrc/git-credential-netrc || \
-  { printf "Unable to curl git-credential-netrc.\\n"; exit 1; }
-chmod +x ~/bin/git-credential-netrc || \
-  { printf "Unable to set execute bit on git-credential-netrc.\\n"; exit 1; }
-printf "git-credential-netrc downloaded and execute bit set.\\n"
+utility=git-credential-netrc
+printf "Installing ${utility} helper.\\n"
+curl --silent --show-error --create-dirs --output ~/bin/"${utility}" \
+  https://raw.githubusercontent.com/git/git/master/contrib/credential/netrc/"${utility}" || \
+  { printf "Unable to curl ${utility}.\\n"; exit 1; }
+chmod +x ~/bin/"${utility}" || \
+  { printf "Unable to set execute bit on ${utility}.\\n"; exit 1; }
+printf "${utility} downloaded and execute bit set.\\n"
+
+# Install diff-highlight git tool
+utility=diff-highlight
+printf "Installing ${utility} tool.\\n"
+curl --silent --show-error --create-dirs --output ~/bin/"${utility}" \
+  https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/"${utility}"/"${utility}" || \
+  { printf "Unable to curl diff highlight.\\n"; exit 1; }
+chmod +x ~/bin/"${utility}" || \
+  { printf "Unable to set execute bit on ${utility}.\\n"; exit 1; }
+printf "${utility} downloaded and execute bit set.\\n"
