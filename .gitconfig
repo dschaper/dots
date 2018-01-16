@@ -141,7 +141,7 @@
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     pager = less -FXR
 [credential "https://github.com"]
-	helper = netrc -f ~/.netrc.gpg -v
+	helper = netrc -f ~/.netrc.gpg
 [format]
 	signoff = true
 
