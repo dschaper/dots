@@ -45,6 +45,7 @@ if ! zgen saved; then
   zgen load djui/alias-tips
   zgen load peterhurford/git-it-on.zsh
   zgen load unixorn/autoupdate-zgen
+  zgen load petervanderdoes/git-flow-completion
 
   zgen save
 fi
