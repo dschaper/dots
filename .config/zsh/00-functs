@@ -183,3 +183,18 @@ dedupe_path() {
   export PATH=${(j+:+)result}
 }
 zle -N dedupe_path
+
+usevim() {
+	export EDITOR=vim
+	if command -v git >/dev/null 2>&1; then
+		git config --global core.editor "vim -pc ':normal gg'"
+	fi
+}
+
+usenvim() {
+	export EDITOR=nvim
+	if command -v git >/dev/null 2>&1; then
+		git config --global core.editor "nvim -pc ':normal gg'"
+	fi
+}
+# vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8

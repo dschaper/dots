@@ -55,3 +55,4 @@ setopt correct                  # spelling correction for commands
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
 
 setopt share_history            # Share your history across all your terminal windows
+# vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8

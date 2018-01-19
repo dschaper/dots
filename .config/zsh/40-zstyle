@@ -5,3 +5,4 @@ zstyle ':completion:*' menu select                          # menu if nb items >
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")';
        # colorz !
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate # list of completers to use
+# vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8

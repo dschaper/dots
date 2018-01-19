@@ -137,7 +137,7 @@
 [commit]
 	gpgsign = true
 [core]
-    editor = vim -pc ':normal gg'
+	editor = vim -pc ':normal gg'
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     pager = less -FXR
 [credential "https://github.com"]
@@ -152,6 +152,8 @@
 [receive]
 	fsckObjects = true
 
+[gitflow "path"]
+    hooks = ~/.local/share/git-flow/hooks
 [gpg]
     program = gpg2
 [help]

@@ -104,3 +104,4 @@ if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
   # Run once to get initial cwd set
   update_terminalapp_cwd
 fi
+# vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8
