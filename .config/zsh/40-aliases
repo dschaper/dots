@@ -29,6 +29,8 @@ alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --"
 
 alias d='dirs -v | head -10'                      # List the last ten directories we've been to this session, no duplicates
 
+alias di='docker images'
+
 alias google='web_search google'                  # Note: websearch function is loaded in function file, see above
 alias ddg='web_search ddg'
 alias github='web_search github'

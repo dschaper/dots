@@ -53,6 +53,6 @@ setopt always_to_end            # when completing from the middle of a word, mov
 setopt complete_in_word         # allow completion from within a word/phrase
 setopt correct                  # spelling correction for commands
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
-
+setopt auto_cd                  # automatically add cd to commands
 setopt share_history            # Share your history across all your terminal windows
 # vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8
