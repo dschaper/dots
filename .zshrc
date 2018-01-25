@@ -11,6 +11,10 @@ export ZSH_PLUGS="${XDG_DATA_HOME:=$HOME/.local/share}/zsh"        # Location fo
 
 export TERM="xterm-256color"
 
+mkdir -p ${ZSH_CONF}
+mkdir -p ${ZSH_CACHE}
+mkdir -p ${ZSH_PLUGS}
+
 # Use neovim if it's installed
 if command -v nvim >/dev/null 2>&1; then
   export EDITOR=nvim
