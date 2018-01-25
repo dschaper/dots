@@ -1,7 +1,0 @@
-ANTIGEN_PATH=${XDG_DATA_HOME:=$HOME/.local/share}/antigen
-export ADOTDIR=${ZSH_PLUGS}/antigen
-export ANTIGEN_CACHE=${ZSH_CACHE}/antigen/init.zsh
-source $ANTIGEN_PATH/antigen.zsh
-antigen init ${ZSH_CONF}/antigenrc
-export ZSH_PLUGINS_ALIAS_TIPS_TEXT=" "
-# vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8
