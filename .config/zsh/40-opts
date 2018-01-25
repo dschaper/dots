@@ -29,7 +29,7 @@ setopt \
   `# append a trailing ‘/’ to all directory names resulting from filename generation` \
   MARK_DIRS \
   `# If the internal history needs to be trimmed to add the current command line, setting this option will cause the oldest history event that has a duplicate to be lost before losing a unique event` \
-  HIST_EXPIRE_DUPS_FIRST
+  HIST_EXPIRE_DUPS_FIRST \
   `# hash everything before completion` \
   hash_list_all \
   `# when completing from the middle of a word, move the cursor to the end of the word` \
@@ -40,7 +40,7 @@ setopt \
   correct \
   `# complete as much of a completion until it gets ambiguous.` \
   list_ambiguous \
-  `# automatically add cd to commands \
+  `# automatically add cd to commands` \
   auto_cd \
   `# do not print the directory stack after pushd or popd` \
   PUSHD_SILENT \
