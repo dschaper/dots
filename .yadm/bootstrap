@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+# Update submodules
+pushd $HOME
+
+echo "Init submodules"
+yadm submodule update --recursive --init
+popd
+
 # Install git netrc credential helper
 utility=git-credential-netrc
 printf "Installing ${utility} helper.\\n"
