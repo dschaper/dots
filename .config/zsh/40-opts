@@ -30,6 +30,22 @@ setopt \
   MARK_DIRS \
   `# If the internal history needs to be trimmed to add the current command line, setting this option will cause the oldest history event that has a duplicate to be lost before losing a unique event` \
   HIST_EXPIRE_DUPS_FIRST
+  `# hash everything before completion` \
+  hash_list_all \
+  `# when completing from the middle of a word, move the cursor to the end of the word` \
+  always_to_end \
+  `# allow completion from within a word/phrase` \
+  complete_in_word \
+  `# spelling correction for commands` \
+  correct \
+  `# complete as much of a completion until it gets ambiguous.` \
+  list_ambiguous \
+  `# automatically add cd to commands \
+  auto_cd \
+  `# do not print the directory stack after pushd or popd` \
+  PUSHD_SILENT \
+  `# Share your history across all your terminal windows` \
+  share_history
 
 unsetopt \
   `# do not set auto_name_dirs because it messes up prompts ` \
@@ -38,21 +54,7 @@ unsetopt \
   MENU_COMPLETE \
   `# do not freezes output to the terminal until you type ^q `\
   FLOWCONTROL \
-  `# do not print the directory stack after pushd or popd` \
-  PUSHD_SILENT \
-  `# if a command is not in the hash table, and there exists an executable directory by that name, perform the cd command to that directory` \
-  AUTO_CD \
-  `# this option both imports new commands from the history file, and also causes your typed command ` \
-  SHARE_HISTORY \
   `# do not beeep, please ` \
   HIST_BEEP
-
-## zsh completions
-setopt hash_list_all            # hash everything before completion
-setopt always_to_end            # when completing from the middle of a word, move the cursor to the end of the word
-setopt complete_in_word         # allow completion from within a word/phrase
-setopt correct                  # spelling correction for commands
-setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
-setopt auto_cd                  # automatically add cd to commands
-setopt share_history            # Share your history across all your terminal windows
+            
 # vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8
