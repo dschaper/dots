@@ -168,6 +168,8 @@
 	diff = diff-highlight | less
 [status]
     submoduleSummary = 1
+[user]
+    signingkey = 6C8E6888ED3D42A0
 [vim]
     modeline = tabstop=8 shiftwidth=8 noexpandtab cindent
     modeline-c = ts=4 sw=4 et
