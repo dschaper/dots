@@ -21,11 +21,6 @@ curl_and_chmod(){
 # Install utilities to ~/bin
 pushd ~/bin || { printf "Can not change to ~/bin."; exit 1; }
 
-# Install git netrc credential helper
-utility=git-credential-netrc
-url=https://raw.githubusercontent.com/git/git/master/contrib/credential/netrc/"${utility}"
-curl_and_chmod "${utility}" "${url}"
-
 # Install diff-highlight git utility
 utility=diff-highlight
 url=https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/"${utility}/${utility}"
