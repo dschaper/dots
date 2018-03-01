@@ -2,10 +2,7 @@
 # With a little help from http://www.joshuad.net/zshrc-config and
 # https://github.com/unixorn/zsh-quickstart-kit/blob/master/zsh/.zshrc
 
-source ~/.zprofile
-
 ### Files and Directories
-export ZSH_CACHE="${XDG_CACHE_HOME:=$HOME/.cache}/zsh"				# Cache for storing history and zcompdump
 export ZSH_PLUGS="${XDG_DATA_HOME:=$HOME/.local/share}/zsh"        # Location for plugins and files
 
 export TERM="xterm-256color"
@@ -41,7 +38,7 @@ if [[ -n $ZDOTDIR ]]; then
 fi
 
 # History
-export HISTFILE=$ZSH_CACHE/history
+export HISTFILE=$ZSH_CACHE_DIR/history
 export SAVEHIST=10000
 export HISTSIZE=10000
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:yadm *"
@@ -50,4 +47,4 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:yadm *"
 dedupe_path
 autoload -Uz compinit
 # Load command line completions
-compinit
+compinit -d $ZSH_CACHE_DIR/zcompdump
