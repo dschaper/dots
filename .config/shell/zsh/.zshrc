@@ -13,8 +13,13 @@ fi
 
 # Use neovim if it's installed
 if (( $+commands[nvim] )); then
-  export EDITOR=nvim
+  export VISUAL=nvim
+elif (( $+commands[vim] )); then
+  export VISUAL=vim
+elif (( $+commands[nano] )); then
+  export VISUAL=nano
 fi
+  export EDITOR=$VISUAL
 
 # Workaround for Tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then

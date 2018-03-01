@@ -1,0 +1,9 @@
+alias vi="vim"
+
+if (( $+commands[nvim] )); then
+  alias vim=nvim
+elif (( $+commands[nano] )); then
+  alias vim=nano
+fi
+
+alias ezshrc="${EDITOR} ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zshrc && echo Updated zshrc."

@@ -1,0 +1,26 @@
+alias sudo=' sudo'
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+alias -g .......='../../../../../..'
+alias -g ........='../../../../../../..'
+   
+alias ls="ls -h --color='auto'"
+alias lsa='ls -A'
+alias ll='ls -l'
+alias la='ls -lA'
+alias lx='ls -lXB'    #Sort by extension
+alias lt='ls -ltr'
+alias lk='ls -lSr'
+
+alias mkdir='mkdir -pv'
+alias rd='rmdir'
+
+# Search running processes. Usage: psg <process_name>
+alias psgrep="ps aux $( [[ -n "$(uname -a | grep CYGWIN )" ]] && echo '-W') | grep -i $1"
+
+# Copy with a progress bar
+alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --" 
+
+alias d='dirs -v | head -10'                      # List the last ten directories we've been to this session, no duplicates
