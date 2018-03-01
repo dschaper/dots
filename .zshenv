@@ -1,1 +1,1 @@
-/home/dschaper/.config/zsh/zshenv
+.config/zsh/zshenv
