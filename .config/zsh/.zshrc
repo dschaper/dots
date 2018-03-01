@@ -3,12 +3,7 @@
 # https://github.com/unixorn/zsh-quickstart-kit/blob/master/zsh/.zshrc
 
 ### Files and Directories
-export ZSH_PLUGS="${XDG_DATA_HOME:=$HOME/.local/share}/zsh"        # Location for plugins and files
-
 export TERM="xterm-256color"
-
-mkdir -p ${ZSH_CACHE}
-mkdir -p ${ZSH_PLUGS}
 
 # Set SSH to use gpg-agent
 unset SSH_AGENT_PID

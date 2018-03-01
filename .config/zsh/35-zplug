@@ -1,5 +1,21 @@
-ZPLUG_CACHE_DIR=${ZSH_CACHE}/zplug/cache
-ZPLUG_HOME=${ZSH_PLUGS}/zplug
-ZPLUG_PATH=${XDG_DATA_HOME:=$HOME/.local/share}/zplug
-source ${ZPLUG_PATH}/init.zsh
-source ${ZSH_CONF}/zplugrc
+# Check if zplug is installed
+if [[ ! -d ${ZPLUG_HOME} ]]; then
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  mkdir -p ${ZPLUG_CACHE_DIR}
+fi
+
+source ${ZPLUG_HOME}/init.zsh
+
+# Config files located in ${XDG_CONFIG_HOME}/zplug/zplugrc
+
+# Install packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+zplug load

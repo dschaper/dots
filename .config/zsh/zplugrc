@@ -6,12 +6,3 @@ zplug "djui/alias-tips"
 zplug "peterhurford/git-it-on.zsh"
 zplug "petervanderdoes/git-flow-completion"
 zplug "bhilburn/powerlevel9k", as:theme
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug load
