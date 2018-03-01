@@ -27,7 +27,7 @@ fi
 typeset -xm 'XDG_*'
 
 # zsh
-: ${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}
+: ${ZDOTDIR:=$XDG_CONFIG_HOME/shell/zsh}
 : ${ZSH_CACHE_DIR:=$XDG_CACHE_HOME/zsh}
 typeset -x 'ZDOTDIR'
 typeset -x 'ZSH_CACHE_DIR'
@@ -35,5 +35,5 @@ typeset -x 'ZSH_CACHE_DIR'
 # zplug
 : ${ZPLUG_CACHE_DIR:=${XDG_CACHE_HOME}/zplug}
 : ${ZPLUG_HOME:=${XDG_DATA_HOME}/zplug}
-: ${ZPLUG_LOADFILE:=${XDG_CONFIG_HOME}/zsh/zplugrc}
+: ${ZPLUG_LOADFILE:=${XDG_CONFIG_HOME}/shell/zsh/zplugrc}
 typeset -xm 'ZPLUG_*'

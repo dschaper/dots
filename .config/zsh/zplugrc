@@ -1,8 +1,0 @@
-zplug "zdharma/fast-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "djui/alias-tips"
-zplug "peterhurford/git-it-on.zsh"
-zplug "petervanderdoes/git-flow-completion"
-zplug "bhilburn/powerlevel9k", as:theme
