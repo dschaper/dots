@@ -13,3 +13,23 @@
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
 
+# XDG defaults
+if (( $+commands[xdg-user-dirs-update] )); then
+	xdg-user-dirs-update
+	xdg-user-dirs-update --set CONFIG $HOME/.config
+	source $(xdg-user-dir CONFIG)/user-dirs.dirs
+fi
+
+: ${XDG_CONFIG_HOME:=$HOME/.config}
+: ${XDG_CACHE_HOME:=$HOME/.cache}
+: ${XDG_DATA_HOME:=$HOME/.local/share}
+: ${XDG_RUNTIME_HOME:=$HOME/.tmp}
+
+# Export XDG
+typeset -xm 'XDG_*'
+
+# zsh
+: ${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}
+: ${ZSH_CACHE_DIR:=$XDG_CACHE_HOME/zsh}
+typeset -x 'ZDOTDIR'
+typeset -x 'ZSH_CACHE_DIR'
