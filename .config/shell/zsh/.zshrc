@@ -4,6 +4,7 @@
 
 ### Files and Directories
 export TERM="xterm-256color"
+eval $(dircolors "${ZDOTDIR}/dircolors/${DIR_COLORS}")
 
 # Set SSH to use gpg-agent
 unset SSH_AGENT_PID

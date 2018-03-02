@@ -7,3 +7,4 @@ elif (( $+commands[nano] )); then
 fi
 
 alias ezshrc="${EDITOR} ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zshrc && echo Updated zshrc."
+alias ezplug="${EDITOR} ${ZDOTDIR}/zplugrc && echo Updated zplugrc."

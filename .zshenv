@@ -35,5 +35,9 @@ typeset -x 'ZSH_CACHE_DIR'
 # zplug
 : ${ZPLUG_CACHE_DIR:=${XDG_CACHE_HOME}/zplug}
 : ${ZPLUG_HOME:=${XDG_DATA_HOME}/zplug}
-: ${ZPLUG_LOADFILE:=${XDG_CONFIG_HOME}/shell/zsh/zplugrc}
+: ${ZPLUG_LOADFILE:=${ZDOTDIR}/zplugrc}
 typeset -xm 'ZPLUG_*'
+
+# dircolors
+: ${DIR_COLORS:=gruvbox.256dark}
+typeset -x 'DIR_COLORS'
