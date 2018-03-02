@@ -1,21 +1,31 @@
 #!/usr/bin/env bash
 
+# Silence pushd/popd
+pushd () {
+    command pushd "$@" > /dev/null
+}
+
+popd () {
+    command popd "$@" > /dev/null
+}
+
 # Update submodules
 pushd "$HOME" || { printf "Can not change to home directory."; exit 1; }
-printf "Init submodules"
+printf "Init submodules..."
 yadm submodule update --recursive --init
 popd || { printf "Can not change to previous directory."; exit 1; }
+printf "Done!\\n"
 
 curl_and_chmod(){
   local utility="${1}"
   local url="${2}"
 
-  printf "Installing %s utility.\\n" "${utility}"
+  printf "Installing %s utility..." "${utility}"
   curl --silent --show-error --create-dirs --output "${utility}" \
     "${url}" || { printf "Unable to curl %s.\\n" "${utility}"; exit 1; }
   chmod +x "${utility}" || \
     { printf "Unable to set execute bit on %s.\\n" "${utility}"; exit 1; }
-  printf "%s downloaded and execute bit set.\\n" "${utility}"
+  printf "downloaded and execute bit set.\\n" "${utility}"
 }
 
 # Install utilities to ~/bin
@@ -30,3 +40,7 @@ curl_and_chmod "${utility}" "${url}"
 utility=mc
 url=https://dl.minio.io/client/"${utility}"/release/linux-amd64/"${utility}"
 curl_and_chmod "${utility}" "${url}"
+
+# Install docker zsh command line completions
+curl -fLo ${ZDOTDIR}/completions/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
+curl -fLo ${ZDOTDIR}/completions/_docker-compose https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose

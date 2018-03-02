@@ -27,6 +27,9 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
 fi
 
+### Completions
+fpath=($ZDOTDIR/completions $fpath)
+
 ### Source helpers
 if [[ -n $ZDOTDIR ]]; then
   for configfile in $ZDOTDIR/*
