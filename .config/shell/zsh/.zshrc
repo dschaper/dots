@@ -30,6 +30,12 @@ fi
 ### Completions
 fpath=($ZDOTDIR/completions $fpath)
 
+### Aliases
+for aliasfile in ${ZDOTDIR}/aliases/*
+do
+  source "${aliasfile}"
+done
+
 ### Source helpers
 if [[ -n $ZDOTDIR ]]; then
   for configfile in $ZDOTDIR/*

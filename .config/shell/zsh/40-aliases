@@ -1,4 +1,0 @@
-for aliasfile in ${ZDOTDIR}/aliases/*
-do
-  source "${aliasfile}"
-done
