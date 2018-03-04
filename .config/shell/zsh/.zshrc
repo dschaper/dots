@@ -31,10 +31,10 @@ fi
 fpath=($ZDOTDIR/completions $fpath)
 
 ### Aliases
-for aliasfile in ${ZDOTDIR}/aliases/*
-do
+for aliasfile in ${ZDOTDIR}/aliases/*; do
   source "${aliasfile}"
 done
+unset aliasfile
 
 ### Source helpers
 if [[ -n $ZDOTDIR ]]; then

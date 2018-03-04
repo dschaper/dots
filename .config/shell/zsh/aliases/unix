@@ -24,3 +24,7 @@ alias psgrep="ps aux $( [[ -n "$(uname -a | grep CYGWIN )" ]] && echo '-W') | gr
 alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --" 
 
 alias d='dirs -v | head -10'                      # List the last ten directories we've been to this session, no duplicates
+
+alias pcat='pygmentize -f terminal256 -O style=monokai -g'
+
+alias sourcez='source ${ZDOTDIR}/.zshrc'

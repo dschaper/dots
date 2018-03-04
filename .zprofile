@@ -8,6 +8,7 @@ typeset -Ug cdpath fpath mailpath path
 path=(
   ~/bin
   /usr/local/{bin,sbin}
+  ~/.cargo/bin
   $path
 )
 
