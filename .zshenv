@@ -41,3 +41,6 @@ typeset -xm 'ZPLUG_*'
 # dircolors
 : ${DIR_COLORS:=gruvbox.256dark}
 typeset -x 'DIR_COLORS'
+
+# Workaround for Arch
+source ~/.zprofile
