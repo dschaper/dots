@@ -1,60 +1,100 @@
-# https://github.com/voku/dotfiles/blob/master/.redpill/lib/1_options.zsh
-setopt \
-  `# please no beeeeeeps` \
-  NO_BEEP \
-  `# Do not enter command lines into the history list if they are duplicates of the previous event` \
-  HIST_IGNORE_DUPS \
-  `# remove the history (fc -l) command from the history list when invoked` \
-  HIST_NO_STORE \
-  `# Save each command’s beginning timestamp (in seconds since the epoch) and the duration (in seconds) to the history file` \
-  EXTENDED_HISTORY \
-  `# remove command lines from the history list when the first character on the line is a space` \
-  HIST_IGNORE_SPACE \
-  `# remove superfluous blanks from each command line being added to the history list` \
-  HIST_REDUCE_BLANKS \
-  `# when listing files that are possible completions, show the type of each file with trailing mark` \
-  LIST_TYPES \
-  `# automatically list choices on an ambiguous completion` \
-  AUTO_LIST \
-  `# automatically use menu completion after the second consecutive request for completion` \
-  AUTO_MENU \
-  `# when listing files that are possible completions, show the type of each file with a trailing identifying mark` \
-  LIST_TYPES \
-  `# don’t push multiple copies of the same directory onto the directory stack` \
-  PUSHD_IGNORE_DUPS \
-  `# if unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and completion is done from both ends` \
-  COMPLETE_IN_WORD \
-  `# extra completion` \
-  COMPLETE_ALIASES \
-  `# append a trailing ‘/’ to all directory names resulting from filename generation` \
-  MARK_DIRS \
-  `# If the internal history needs to be trimmed to add the current command line, setting this option will cause the oldest history event that has a duplicate to be lost before losing a unique event` \
-  HIST_EXPIRE_DUPS_FIRST \
-  `# hash everything before completion` \
-  hash_list_all \
-  `# when completing from the middle of a word, move the cursor to the end of the word` \
-  always_to_end \
-  `# allow completion from within a word/phrase` \
-  complete_in_word \
-  `# spelling correction for commands` \
-  correct \
-  `# complete as much of a completion until it gets ambiguous.` \
-  list_ambiguous \
-  `# automatically add cd to commands` \
-  auto_cd \
-  `# do not print the directory stack after pushd or popd` \
-  PUSHD_SILENT \
-  `# Share your history across all your terminal windows` \
-  share_history
+setopt NO_BEEP
 
-unsetopt \
-  `# do not set auto_name_dirs because it messes up prompts ` \
-  AUTO_NAME_DIRS \
-  `# do not autoselect the first completion entry ` \
-  MENU_COMPLETE \
-  `# do not freezes output to the terminal until you type ^q `\
-  FLOWCONTROL \
-  `# do not beeep, please ` \
-  HIST_BEEP
-            
+## Changing Directories
+
+setopt AUTO_CD
+# If a command is issued that can't be executed as a normal command, and the command is the name 
+# of a directory, perform the cd command to that directory. 
+	
+setopt PUSHD_IGNORE_DUPS
+# Don't push multiple copies of the same directory onto the directory stack. 
+	
+setopt PUSHD_SILENT
+# Do not print the directory stack after pushd or popd. 
+	
+setopt PUSHD_TO_HOME
+# Have pushd with no arguments act like 'pushd $HOME'. 
+
+## Completion
+
+setopt ALWAYS_TO_END
+# If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor 
+# is moved to the end of the word. That is, the cursor is moved to the end of the word if either a single 
+# match is inserted or menu completion is performed. 
+
+setopt AUTO_LIST
+# Automatically list choices on an ambiguous completion.
+
+setopt AUTO_MENU
+unsetopt MENU_COMPLETE
+# Automatically use menu completion after the second consecutive request for completion, for example by 
+# pressing the tab key repeatedly. This option is overridden by MENU_COMPLETE.
+
+setopt COMPLETE_ALIASES
+# Prevents aliases on the command line from being internally substituted before completion is attempted. 
+# The effect is to make the alias a distinct command for completion purposes. 
+
+unsetopt COMPLETE_IN_WORD
+# If unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and 
+# completion is done from both ends. 
+
+setopt LIST_AMBIGUOUS
+# This option works when AUTO_LIST or BASH_AUTO_LIST is also set. If there is an unambiguous prefix to insert 
+# on the command line, that is done without a completion list being displayed; in other words, auto-listing 
+# behaviour only takes place when nothing would be inserted. 
+
+setopt LIST_TYPES
+# When listing files that are possible completions, show the type of each file with a trailing identifying mark. 
+
+## History
+
+setopt EXTENDED_HISTORY
+# Save each command's beginning timestamp (in seconds since the epoch) and the duration (in seconds) to the 
+# history file. The format of this prefixed data is: 
+# ':<beginning time>:<elapsed seconds>:<command>'. 
+
+setopt HIST_EXPIRE_DUPS_FIRST
+# If the internal history needs to be trimmed to add the current command line, setting this option will cause the 
+# oldest history event that has a duplicate to be lost before losing a unique event from the list. You should be 
+# sure to set the value of HISTSIZE to a larger number than SAVEHIST in order to give you some room for the 
+# duplicated events, otherwise this option will behave just like HIST_IGNORE_ALL_DUPS once the history fills up
+# with unique events. 
+
+setopt HIST_FIND_NO_DUPS
+# When searching for history entries in the line editor, do not display duplicates of a line previously found, even 
+# if the duplicates are not contiguous.
+
+setopt HIST_IGNORE_DUPS
+# Do not enter command lines into the history list if they are duplicates of the previous event. 
+
+setopt HIST_IGNORE_SPACE
+# Remove command lines from the history list when the first character on the line is a space, or when one of the
+# expanded aliases contains a leading space. Note that the command lingers in the internal history until the next
+# command is entered before it vanishes, allowing you to briefly reuse or edit the line. If you want to make it 
+# vanish right away without entering another command, type a space and press return.
+
+setopt HIST_NO_STORE
+# Remove the history (fc -l) command from the history list when invoked. Note that the command lingers in the
+# internal history until the next command is entered before it vanishes, allowing you to briefly reuse or edit the
+# line. 
+
+setopt HIST_REDUCE_BLANKS
+# Remove superfluous blanks from each command line being added to the history list. 
+
+## Input/Output
+
+setopt ALIASES
+# Expand aliases
+
+setopt CORRECT
+setopt HASH_LIST_ALL
+# Try to correct the spelling of commands. Note that, when the HASH_LIST_ALL option is not set or when some 
+# directories in the path are not readable, this may falsely report spelling errors the first time some commands
+# are used. 
+# The shell variable CORRECT_IGNORE may be set to a pattern to match words that will never be offered as
+# corrections. 
+
+setopt MARK_DIRS
+# Append a trailing '/' to all directory names resulting from filename generation (globbing). 
+
 # vim:ft=zsh ts=2 sw=2 sts=2 et fenc=utf-8

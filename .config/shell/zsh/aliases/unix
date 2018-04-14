@@ -1,4 +1,4 @@
-alias sudo=' sudo'
+alias sudo=' sudo '
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
